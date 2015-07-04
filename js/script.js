@@ -52,6 +52,7 @@ var myChart = d3.select("#chart").append("svg")
       .attr("height", 0)
       .attr("y", height)
 
+// Events
 
   .on("mouseover", function(d) {
 
@@ -72,8 +73,12 @@ var myChart = d3.select("#chart").append("svg")
     d3.select(this)
       .style("opacity", 1)
       .style("fill", tempColor);
+
+    tooltip.transition()
+      .style("opacity", 0);
   });
 
+// Animations
 
   myChart.transition()
     .attr("height", function(d) {
@@ -88,7 +93,7 @@ var myChart = d3.select("#chart").append("svg")
     .duration(1000)
     .ease("elastic");
 
-
+// Axis
 
 var vGuideScale = d3.scale.linear()
   .domain([0, d3.max(barData)])
